@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users, only: [:new, :create]
+  end
+  
   resources :appointments
   get "patient/dashboard" , to: 'patient#dashboard'
   get "doctor/dashboard", to: 'doctor#dashboard'
