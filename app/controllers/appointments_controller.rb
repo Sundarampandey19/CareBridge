@@ -69,4 +69,11 @@ class AppointmentsController < ApplicationController
     def appointment_params
       params.require(:appointment).permit(:date, :time, :patient_id, :doctor_id)
     end
+
+    def check_receptionist
+      unless current_user.receptionist?
+        redirect_to root_path, alert: "You are not authorized to create appointments."
+      end
+    end
+
 end
