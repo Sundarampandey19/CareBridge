@@ -1,24 +1,46 @@
-# README
+# Clinic Management System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A comprehensive Clinic Management System built with **Ruby on Rails 7**, providing different dashboards for Admin, Receptionists, Doctors, and Patients. This system helps manage clinic operations smoothly, from scheduling appointments to managing patients and payments.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+### 1. Admin (Super User) Dashboard
+- Create and manage doctors and receptionists.
+- View all clinic data and manage access for users.
+- Has full control over the system.
 
-* System dependencies
+### 2. Receptionist Dashboard
+- Create, view, and manage appointments.
+- Handle patient registration and check-in.
+- View patient appointment schedules and assist with managing them.
 
-* Configuration
+### 3. Doctor Dashboard
+- View upcoming patients and their details.
+- Track appointment schedules.
+- Review patient information for efficient diagnosis and treatment.
 
-* Database creation
+### 4. Patient Dashboard
+- View scheduled appointments.
+- Make payments for booked appointments.
+- Access personal appointment history and payment information.
 
-* Database initialization
+## Tech Stack
 
-* How to run the test suite
+- **Backend**: Ruby on Rails 7
+- **Authentication**: Devise gem for user authentication and management
+- **Database**: PostgreSQL
+- **Front-end**: Built-in Rails views (using ERB)
+  
+## Setup Instructions
 
-* Services (job queues, cache servers, search engines, etc.)
+### Prerequisites
+- Ruby (>= 3.0.0)
+- Rails (>= 7.0.0)
+- PostgreSQL
 
-* Deployment instructions
+### Installation
 
-* ...
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Sundarampandey19/CareBridge
+   cd CareBbridge
