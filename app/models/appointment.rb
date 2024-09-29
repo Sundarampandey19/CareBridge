@@ -3,10 +3,10 @@ class Appointment < ApplicationRecord
   belongs_to :doctor, class_name: 'User'  
 
 
-  enum status: { pending: 0, completed: 1, canceled: 2 }
-
-  enum payment_status: { unpaid: 0, paid: 1 } # unpaid by default
+  enum :status, {:pending=>0, :completed=>1, :canceled=>2}
   
+  enum :payment_status, {:unpaid=>0, :paid=>1}
+
   after_initialize :set_default_status, if: :new_record? 
 
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }

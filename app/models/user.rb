@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  enum role: { admin: 0, receptionist: 1, doctor: 2, patient: 3 }
 
+  enum :role, {:admin=>0, :receptionist=>1, :doctor=>2, :patient=>3}
   validates :name, presence: true
   validates :age, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
 

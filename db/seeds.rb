@@ -8,6 +8,45 @@ NUM_APPOINTMENTS = 30
 end_date = Date.parse("2024-09-28")
 start_date = end_date - 30
 
+
+
+# Create specific users
+admin = User.create!(
+  email: 'admin@example.com',
+  password: 'password',
+  password_confirmation: 'password',
+  role: :admin,
+  name: 'Admin User'
+)
+
+doctor = User.create!(
+  email: 'doctor@example.com',
+  password: 'password',
+  password_confirmation: 'password',
+  role: :doctor,
+  name: 'Doctor User',
+  age: Faker::Number.between(from: 30, to: 60)
+)
+
+patient = User.create!(
+  email: 'patient@example.com',
+  password: 'password',
+  password_confirmation: 'password',
+  role: :patient,
+  name: 'Patient User',
+  age: Faker::Number.between(from: 18, to: 80)
+)
+
+receptionist = User.create!(
+  email: 'receptionist@example.com',
+  password: 'password',
+  password_confirmation: 'password',
+  role: :receptionist,
+  name: 'Receptionist User'
+)
+
+
+
 # Create patients
 patients = []
 NUM_PATIENTS.times do
