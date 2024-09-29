@@ -3,7 +3,6 @@ databases:
     databaseName: mysite
     user: mysite
     plan: free
-    engine: postgres  # Specify PostgreSQL as the database engine
 
 services:
   - type: web
