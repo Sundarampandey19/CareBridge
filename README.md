@@ -43,4 +43,12 @@ A comprehensive Clinic Management System built with **Ruby on Rails 7**, providi
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/Sundarampandey19/CareBridge
-   cd CareBbridge
+   cd Carebridge
+
+
+## Sample users
+
+-  Admin:        admin@example.com / password
+-  Patient:      patient@example.com / password
+-  Doctor:       doctor@example.com / password
+-  Receptionist: receptionist@example.com / password
