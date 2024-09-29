@@ -1,22 +1,39 @@
-<div id="<%= dom_id appointment %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Date:</strong>
-    <%= appointment.date %>
-  </p>
+<div id="<%= dom_id appointment %>" class="max-w-4xl mx-auto mt-10 p-6 border rounded-lg shadow-md bg-white">
+  <h1 class="text-3xl font-bold mb-8 text-center">Appointment Details</h1>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Time:</strong>
-    <%= appointment.time %>
-  </p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="mb-5">
+      <strong class="block font-semibold mb-1 text-gray-800">Date:</strong>
+      <p class="text-lg text-gray-700"><%= appointment.date.strftime("%B %d, %Y") %></p>
+    </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Patient:</strong>
-    <%= appointment.patient.name %>
-  </p>
+    <div class="mb-5">
+      <strong class="block font-semibold mb-1 text-gray-800">Time:</strong>
+      <p class="text-lg text-gray-700"><%= appointment.time.strftime("%I:%M %p") %></p>
+    </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Doctor:</strong>
-    <%= appointment.doctor.name %>
-  </p>
+    <div class="mb-5">
+      <strong class="block font-semibold mb-1 text-gray-800">Patient:</strong>
+      <p class="text-lg text-gray-700"><%= appointment.patient.name %></p>
+    </div>
 
+    <div class="mb-5">
+      <strong class="block font-semibold mb-1 text-gray-800">Doctor:</strong>
+      <p class="text-lg text-gray-700"><%= appointment.doctor.name %></p>
+    </div>
+
+    <div class="mb-5">
+      <strong class="block font-semibold mb-1 text-gray-800">Status:</strong>
+      <p class="text-lg text-gray-700"><%= appointment.status.humanize %></p>
+    </div>
+
+    <div class="mb-5">
+      <strong class="block font-semibold mb-1 text-gray-800">Payment Status:</strong>
+      <p class="text-lg text-gray-700"><%= appointment.payment_status.humanize %></p>
+    </div>
+  </div>
+
+  <div class="flex justify-center mt-8">
+    <%= link_to "Back to Appointments", appointments_path, class: "rounded-lg py-3 px-6 bg-blue-600 text-white font-medium hover:bg-blue-700 transition duration-300" %>
+  </div>
 </div>

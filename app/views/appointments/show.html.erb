@@ -6,14 +6,17 @@
     <% if current_user.doctor? %> 
     <%= link_to "Back to appointments", doctor_new_page_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 
-
-    <div class="inline-block ml-2">
     <% elsif current_user.receptionist? %>   
-    <%= link_to "Back to appointments", appointments_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this appointment", edit_appointment_path(@appointment), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      <%= button_to "Destroy this appointment", @appointment, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    <% end %>
-    <% end %>
+
+<div class="flex justify-center mb-12">
+  <div class="w-full max-w-lg">
+    <div class="flex justify-between space-x-4 mt-10">
+      <%= link_to "Edit Appointment", edit_appointment_path(@appointment), class: "flex-1 text-center border px-4 py-2 rounded bg-gray-200 hover:bg-gray-700 hover:text-white transition-all duration-200 whitespace-nowrap" %>
+      <%= button_to "Destroy this appointment", @appointment, method: :delete, class: "flex-1 text-center border px-4 py-2 rounded bg-red-200 hover:bg-red-700 hover:text-white transition-all duration-200 whitespace-nowrap" %>
     </div>
+  </div>
+</div>
+    <% end %>
+    <% end %>
   </div>
 </div>

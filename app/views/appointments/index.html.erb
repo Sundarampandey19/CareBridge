@@ -11,33 +11,38 @@
   </div>
 
   <div id="appointments" class="min-w-full mt-5">
-  <table class="min-w-full table-auto border-collapse border border-gray-300">
-    <thead>
-      <tr class="bg-gray-100">
-        <th class="border px-4 py-2 text-left">Date</th>
-        <th class="border px-4 py-2 text-left">Time</th>
-        <th class="border px-4 py-2 text-left">Patient</th>
-        <th class="border px-4 py-2 text-left">Status</th>
-        <th class="border px-4 py-2 text-left">Actions</th>
-        <th class="border px-4 py-2 text-left">Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @appointments.each do |appointment| %>
-        <tr>
-          <!-- Assuming appointment has methods date, time, patient (relation or method), and status -->
-          <td class="border px-4 py-2"><%= appointment.date.strftime("%B %d, %Y") %></td>
-          <td class="border px-4 py-2"><%= appointment.time.strftime("%I:%M %p") %></td>
-          <td class="border px-4 py-2"><%= appointment.patient.name %></td>
-          <td class="border px-4 py-2"><%= appointment.status.present? ? appointment.status.humanize : "No Status" %></td>
-          <td class="border px-4 py-2">
-            <%= link_to "Show this appointment", appointment, class: "ml-2 rounded-lg py-1 px-3 bg-gray-200 font-medium hover:bg-gray-300" %>
-          </td>
-          <td class="border px-4 py-2">$<%= appointment.price %></td>
+    <table class="min-w-full table-auto border-collapse border border-gray-300">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="border px-4 py-2 text-left">Date</th>
+          <th class="border px-4 py-2 text-left">Time</th>
+          <th class="border px-4 py-2 text-left">Patient</th>
+          <th class="border px-4 py-2 text-left">Status</th>
+          <th class="border px-4 py-2 text-left">Payment Status</th>
+          <th class="border px-4 py-2 text-left">Actions</th>
+          <th class="border px-4 py-2 text-left">Price</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-
+      </thead>
+      <tbody>
+        <% @appointments.each do |appointment| %>
+          <tr>
+            <td class="border px-4 py-2"><%= appointment.date.strftime("%B %d, %Y") %></td>
+            <td class="border px-4 py-2"><%= appointment.time.strftime("%I:%M %p") %></td>
+            <td class="border px-4 py-2"><%= appointment.patient.name %></td>
+            <td class="border px-4 py-2"><%= appointment.status.present? ? appointment.status.humanize : "No Status" %></td>
+            <td class="border px-4 py-2">
+              <%= form_with(model: appointment, local: true) do |form| %>
+                <%= form.select :payment_status, Appointment.payment_statuses.keys.map { |status| [status.humanize, status] }, { selected: appointment.payment_status } , { class: 'ml-2' } %>
+                <%= form.submit 'Update', class: 'ml-2 rounded-lg py-1 px-3 bg-blue-500 text-white' %>
+              <% end %>
+            </td>
+            <td class="border px-4 py-2">
+              <%= link_to "Show this appointment", appointment, class: "ml-2 rounded-lg py-1 px-3 bg-gray-200 font-medium hover:bg-gray-300" %>
+            </td>
+            <td class="border px-4 py-2">$<%= appointment.price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

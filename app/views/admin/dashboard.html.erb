@@ -1,12 +1,20 @@
 <div class="max-w-7xl mx-auto">
   <!-- Dashboard Heading -->
   <h1 class="text-center text-4xl font-bold mt-10 mb-8">Admin Dashboard</h1>
-
   <!-- User Statistics Section -->
   <div class="w-full text-center mb-12">
-    <h2 class="text-2xl font-semibold mb-4">User Registration Statistics</h2>
+    <h2 class="text-2xl font-semibold mb-4">User Registrations & Appointment Revenue (Last 30 Days)</h2>
     <div class="border border-gray-300 p-6 rounded shadow-lg bg-white">
-      <%= line_chart User.group_by_day(:created_at).count, height: "500px", width: "100%" %>
+      <%= line_chart [
+        {
+          name: "User Registrations",
+          data: @combined_data.map { |d| [d[:date], d[:user_registrations]] }
+        },
+        {
+          name: "Total Money",
+          data: @combined_data.map { |d| [d[:date], d[:total_money]] }
+        }
+      ] %>
     </div>
   </div>
 

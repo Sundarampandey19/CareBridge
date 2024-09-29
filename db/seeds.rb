@@ -1,33 +1,54 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
-
 require 'faker'
 
-# Define the number of patients to create
+# Define the number of patients and appointments to create
 NUM_PATIENTS = 20
+NUM_APPOINTMENTS = 30
 
 # Calculate the range for the past month
 end_date = Date.parse("2024-09-28")
 start_date = end_date - 30
 
+# Create patients
+patients = []
 NUM_PATIENTS.times do
-  User.create!(
+  patients << User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.unique.email,
-    age: rand(1..100), # Random age between 1 and 100
-    password: 'password', # Set a default password
-    role: :patient, # Set the role as patient
+    age: rand(1..100),
+    password: 'password',
+    role: :patient,
     created_at: Faker::Date.between(from: start_date, to: end_date),
-    updated_at: end_date # Set updated_at to today's date
+    updated_at: end_date
   )
 end
 
-puts "#{NUM_PATIENTS} patient users created successfully!"
+# Create doctors
+doctors = []
+NUM_PATIENTS.times do
+  doctors << User.create!(
+    name: Faker::Name.name,
+    email: Faker::Internet.unique.email,
+    age: rand(30..70),  # Assuming doctors are older
+    password: 'password',
+    role: :doctor,
+    created_at: Faker::Date.between(from: start_date, to: end_date),
+    updated_at: end_date
+  )
+end
+
+# Create appointments
+NUM_APPOINTMENTS.times do
+  Appointment.create!(
+    patient: patients.sample,
+    doctor: doctors.sample,
+    price: rand(10..50),  # Random price between 50 and 300
+    date: Faker::Date.between(from: start_date, to: end_date),
+    time: "#{rand(9..17)}:#{[0, 15, 30, 45].sample}",  # Random time in hours:minutes format
+    created_at: Faker::Date.between(from: start_date, to: end_date),
+    updated_at: end_date,
+    status: :completed,     # Mark as completed
+    payment_status: :paid    # Mark as paid
+  )
+end
+
+puts "#{NUM_APPOINTMENTS} appointments created successfully!"
