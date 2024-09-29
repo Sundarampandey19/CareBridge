@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Assignment" %></title>
+    <title><%= content_for(:title) || "CareBridge" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -10,8 +10,7 @@
     <%= yield :head %>
 
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -21,48 +20,51 @@
   <body>
    
    <header class="bg-white shadow">
-    <div class="container mx-auto flex justify-between items-center p-5">
-      <h1 class="text-2xl font-bold text-gray-800">ClinicApp</h1>
-      <nav>
-        <ul class="flex space-x-4">
-        
-          <% if user_signed_in? %>
-           <% if current_user.admin? %>
-        <li >   
-          <%= link_to "Dashboard", admin_dashboard_path, class: "text-gray-600 hover:text-gray-800 hover:underline" %>
-        </li>
-           <% elsif current_user.patient? %>
-        <li >   
-          <%= link_to "Dashboard", patient_dashboard_path, class: "text-gray-600 hover:text-gray-800 hover:underline" %>
-        </li>
-      <% elsif current_user.doctor? %>
-        <li>
-          <%= link_to "Dashboard", doctor_dashboard_path, class: "text-gray-600 hover:text-gray-800 hover:underline" %>
-        </li>
-      <% elsif current_user.receptionist? %>
-        <li >
-          <%= link_to "Dashboard", receptionist_dashboard_path, class: "text-gray-600 hover:text-gray-800 hover:underline" %>
-        </li>
-      <% end %>
+  <div class="container mx-auto max-w-screen-xl flex justify-between items-center p-4 lg:p-5">
+    <!-- Brand -->
+    <h1 class="text-2xl font-bold text-gray-800">CareBridge</h1>
+
+    <!-- Navigation -->
+    <nav>
+      <ul class="flex space-x-4 lg:space-x-6">
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
             <li>
-              <%= link_to destroy_user_session_path, data: { "turbo-method": :delete, "turbo-confirm": "Are you sure you want to sign out?" }, class: "text-red-500 hover:text-red-700" do %>
-                <i class="fa-solid fa-sign-out mr-2"></i> Sign out
-              <% end %>
+              <%= link_to "Dashboard", admin_dashboard_path, class: "text-gray-600 hover:text-gray-800 hover:underline" %>
             </li>
-          <% else %>
+          <% elsif current_user.patient? %>
+            <li>
+              <%= link_to "Dashboard", patient_dashboard_path, class: "text-gray-600 hover:text-gray-800 hover:underline" %>
+            </li>
+          <% elsif current_user.doctor? %>
+            <li>
+              <%= link_to "Dashboard", doctor_dashboard_path, class: "text-gray-600 hover:text-gray-800 hover:underline" %>
+            </li>
+          <% elsif current_user.receptionist? %>
+            <li>
+              <%= link_to "Dashboard", receptionist_dashboard_path, class: "text-gray-600 hover:text-gray-800 hover:underline" %>
+            </li>
+          <% end %>
+          <li>
+            <%= link_to destroy_user_session_path, data: { "turbo-method": :delete, "turbo-confirm": "Are you sure you want to sign out?" }, class: "text-red-500 hover:text-red-700" do %>
+              <i class="fa-solid fa-sign-out mr-2"></i> Sign out
+            <% end %>
+          </li>
+        <% else %>
           <li><%= link_to "Home", root_path, class: "text-gray-600 hover:text-gray-800" %></li>
           <li><%= link_to "About Us", "#about", class: "text-gray-600 hover:text-gray-800" %></li>
           <li><%= link_to "Contact", "#contact", class: "text-gray-600 hover:text-gray-800" %></li>
-            <li>
-              <%= link_to new_user_session_path, class: "text-green-500 hover:text-green-700" do %>
-                <i class="fa-solid fa-sign-in mr-2"></i> Sign in
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      </nav>
-    </div>
-  </header>
+          <li>
+            <%= link_to new_user_session_path, class: "text-green-500 hover:text-green-700" do %>
+              <i class="fa-solid fa-sign-in mr-2"></i> Sign in
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
+
 
     <main class="">
       <% if notice %>
@@ -79,6 +81,12 @@
     </div>
   <% end %>
       <%= yield %>
+      <%= render 'layouts/footer' %>
+
+    <!-- Include Ionicons for social icons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
     </main>
   </body>
 </html>

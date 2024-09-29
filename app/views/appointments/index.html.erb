@@ -44,5 +44,15 @@
         <% end %>
       </tbody>
     </table>
+    <% if user_signed_in? %>
+    <% if current_user.receptionist? %> 
+  <div class="my-20 text-center">
+    <%= paginate @appointments %> 
+    <% end %>
+    <% end %>
+  </div>
   </div>
 </div>
+
+</div>
+

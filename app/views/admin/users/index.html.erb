@@ -34,4 +34,8 @@
   <% if @users.empty? %>
     <p class="mt-5 text-gray-500">No users found.</p>
   <% end %>
+
+  <div class="mt-5">
+    <%= paginate @users %> <!-- This will generate the pagination links -->
+  </div>
 </div>

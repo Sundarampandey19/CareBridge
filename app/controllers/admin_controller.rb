@@ -17,7 +17,7 @@ class AdminController < ApplicationController
       user_registrations: @user_stats[date] || 0,
       total_money: @appointment_stats[date] || 0
     }
-  end
+  end 
   end
   private
   def authorize_admin

@@ -33,7 +33,12 @@
     </div>
   </div>
 
+   <% if user_signed_in? %>
+    <% if current_user.receptionist? %>  
+
   <div class="flex justify-center mt-8">
     <%= link_to "Back to Appointments", appointments_path, class: "rounded-lg py-3 px-6 bg-blue-600 text-white font-medium hover:bg-blue-700 transition duration-300" %>
   </div>
+   <% end %>
+    <% end %>
 </div>

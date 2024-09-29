@@ -8,7 +8,7 @@ class AppointmentsController < ApplicationController
     if current_user.doctor? 
       @appointments = Appointment.where(doctor_id: current_user.id)
     else
-      @appointments = Appointment.all
+      @appointments = Appointment.all.page(params[:page]).per(10)
     end
   end
 

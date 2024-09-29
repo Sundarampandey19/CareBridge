@@ -18,8 +18,8 @@ class Admin::UsersController < ApplicationController
     end
   
     def index
-        @users = User.all # Fetch all users
-    end
+      @users = User.page(params[:page]).per(10) # Fetch all users
+    end 
 
     def edit
       # Renders the edit form

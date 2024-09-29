@@ -3,10 +3,8 @@
 
     <%= render @appointment %>
     <% if user_signed_in? %>
-    <% if current_user.doctor? %> 
-    <%= link_to "Back to appointments", doctor_new_page_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-
-    <% elsif current_user.receptionist? %>   
+    
+    <% if current_user.receptionist? %>   
 
 <div class="flex justify-center mb-12">
   <div class="w-full max-w-lg">

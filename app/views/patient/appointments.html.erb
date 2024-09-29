@@ -17,10 +17,10 @@
     <tbody>
       <% @appointments.each do |appointment| %>
         <tr>
-          <td class="border px-4 py-2"><%= appointment.created_at.strftime("%B %d, %Y") %></td>
-          <td class="border px-4 py-2"><%= appointment.doctor.name %></td>
-          <td class="border px-4 py-2"><%= number_to_currency(appointment.price) %></td>
-          <td class="border px-4 py-2"><%= appointment.payment_status.humanize %></td>
+          <td class="border px-4 py-2 text-center"><%= appointment.created_at.strftime("%B %d, %Y") %></td>
+          <td class="border px-4 py-2 text-center" ><%= appointment.doctor.name %></td>
+          <td class="border px-4 py-2 text-center"><%= number_to_currency(appointment.price) %></td>
+          <td class="border px-4 py-2 text-center"><%= appointment.payment_status.humanize %></td>
         </tr>
       <% end %>
     </tbody>
