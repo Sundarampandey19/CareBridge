@@ -1,4 +1,17 @@
-<div>
-  <h1 class="font-bold text-4xl">Patient Dashboard</h1>
-  <p>Now time to change the patient dashboard</p>
+<div class="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg mt-10">
+  <h1 class="font-bold text-4xl text-center mb-4">Patient Dashboard</h1>
+  <p class="text-center text-gray-700 mb-6">Welcome to your dashboard! Here you can view your previous appointments and manage your healthcare.</p>
+
+  <div class="flex justify-center mb-8">
+    <%= link_to 'View Previous Appointments', patient_appointments_path, class: "inline-block bg-green-500 text-white px-6 py-3 rounded-lg shadow hover:bg-green-600 transition duration-200 text-lg" %>
+  </div>
+
+  <div class="border-t border-gray-300 pt-4">
+    <h2 class="text-2xl font-semibold text-center mb-4">Get Started</h2>
+    <ul class="list-disc list-inside text-gray-600">
+      <li class="mb-2">Review your past appointments.</li>
+      <li class="mb-2">Make payments for unpaid visits.</li>
+      <li class="mb-2">Stay up-to-date with your healthcare.</li>
+    </ul>
+  </div>
 </div>

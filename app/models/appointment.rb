@@ -4,10 +4,13 @@ class Appointment < ApplicationRecord
 
 
   enum status: { pending: 0, completed: 1, canceled: 2 }
+
+  enum payment_status: { unpaid: 0, paid: 1 } # unpaid by default
+  
   after_initialize :set_default_status, if: :new_record? 
 
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  
+
   private
 
   def set_default_status

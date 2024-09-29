@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   get "admin/dashboard", to: 'admin#dashboard'
   devise_for :users
 
+  get "patient/appointments", to: 'patient#appointments', as: :patient_appointments
+  get "patient/payment", to: 'patient#payment', as: :payment_page
+  post "patient/payment/process", to: 'patient#process_payment', as: :process_payment_page
+
   # Defines the root path route ("/")
   root "home#index"
 end

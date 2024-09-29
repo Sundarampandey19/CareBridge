@@ -31,6 +31,10 @@
         <li >   
           <%= link_to "Dashboard", admin_dashboard_path, class: "text-gray-600 hover:text-gray-800 hover:underline" %>
         </li>
+           <% elsif current_user.patient? %>
+        <li >   
+          <%= link_to "Dashboard", patient_dashboard_path, class: "text-gray-600 hover:text-gray-800 hover:underline" %>
+        </li>
       <% elsif current_user.doctor? %>
         <li>
           <%= link_to "Dashboard", doctor_dashboard_path, class: "text-gray-600 hover:text-gray-800 hover:underline" %>
