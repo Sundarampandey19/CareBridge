@@ -19,8 +19,65 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+   
+   <header class="bg-white shadow">
+    <div class="container mx-auto flex justify-between items-center p-5">
+      <h1 class="text-2xl font-bold text-gray-800">ClinicApp</h1>
+      <nav>
+        <ul class="flex space-x-4">
+        
+          <% if user_signed_in? %>
+           <% if current_user.admin? %>
+        <li >   
+          <%= link_to "Dashboard", admin_dashboard_path, class: "text-gray-600 hover:text-gray-800 hover:underline" %>
+        </li>
+      <% elsif current_user.doctor? %>
+        <li>
+          <%= link_to "Dashboard", doctor_dashboard_path, class: "text-gray-600 hover:text-gray-800 hover:underline" %>
+        </li>
+      <% elsif current_user.receptionist? %>
+        <li >
+          <%= link_to "Dashboard", receptionist_dashboard_path, class: "text-gray-600 hover:text-gray-800 hover:underline" %>
+        </li>
+      <% end %>
+            <li>
+              <%= link_to destroy_user_session_path, data: { "turbo-method": :delete, "turbo-confirm": "Are you sure you want to sign out?" }, class: "text-red-500 hover:text-red-700" do %>
+                <i class="fa-solid fa-sign-out mr-2"></i> Sign out
+              <% end %>
+            </li>
+          <% else %>
+          <li><%= link_to "Home", root_path, class: "text-gray-600 hover:text-gray-800" %></li>
+          <li><%= link_to "About Us", "#about", class: "text-gray-600 hover:text-gray-800" %></li>
+          <li><%= link_to "Contact", "#contact", class: "text-gray-600 hover:text-gray-800" %></li>
+            <li>
+              <%= link_to new_user_session_path, class: "text-green-500 hover:text-green-700" do %>
+                <i class="fa-solid fa-sign-in mr-2"></i> Sign in
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+    <main class="">
+      <% if notice %>
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+      <strong class="font-bold">Success!</strong>
+      <span class="block sm:inline"><%= notice %></span>
+    </div>
+  <% end %>
+
+  <% if alert %>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+      <strong class="font-bold">Warning!</strong>
+      <span class="block sm:inline"><%= alert %></span>
+    </div>
+  <% end %>
       <%= yield %>
     </main>
   </body>
 </html>
+
+
+

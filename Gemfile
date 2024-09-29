@@ -60,3 +60,8 @@ end
 
 gem "devise", "~> 4.9"
 gem "font-awesome-sass"
+gem "chartkick", "~> 5.1"
+
+gem "groupdate", "~> 6.4"
+
+gem "faker", "~> 3.4"

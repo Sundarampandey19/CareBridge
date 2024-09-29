@@ -1,0 +1,13 @@
+let statusSelect = document.querySelector('.status-select');
+statusSelect.value = "<%= @appointment.status %>";
+
+// Optionally, you can also show a success message on the page
+let flashMessage = document.createElement('div');
+flashMessage.className = 'flash-message bg-green-500 text-white p-2 rounded';
+flashMessage.innerText = 'Appointment status successfully updated!';
+document.body.appendChild(flashMessage);
+
+// Remove the flash message after a few seconds
+setTimeout(() => {
+  flashMessage.remove();
+}, 3000);

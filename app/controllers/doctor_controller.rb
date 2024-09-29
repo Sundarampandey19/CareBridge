@@ -3,7 +3,13 @@ class DoctorController < ApplicationController
   before_action :check_doctor
 
   def dashboard
-    @appointments = Appointment.where(doctor_id: current_user.id)
+    # @appointments = Appointment.where(doctor_id: current_user.id).where.not(status: :completed)
+  end
+
+  def new_page
+    # Any logic you need for the page can go here
+    @appointments = Appointment.where(doctor_id: current_user.id).where.not(status: :completed)
+
   end
 
   private

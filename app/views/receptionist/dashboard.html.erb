@@ -1,14 +1,38 @@
-<div>
-  <h1 class="font-bold text-4xl">Welcome to the receptionist dashboard</h1>
-  <p>Here You can see the various appointments and create a new one</p>
-</div>
+<div class="max-w-7xl mx-auto">
+  <!-- Dashboard Heading -->
+  <h1 class="text-center text-4xl font-bold mt-10 mb-8">Receptionist Dashboard</h1>
 
-<%= link_to destroy_user_session_path, data: { "turbo-method": :delete, "turbo-confirm": "Are you sure you want to sign out?" }, class: "block px-4 py-2 hover:rounded hover:bg-gray-700" do %>
-                <%= icon('fa-solid', 'sign-out', class: 'mr-2') %> <span class="hidden md:inline-block">Sign out</span> 
-                              <% end %>
-<%= link_to  new_appointment_path ,  class: "block px-4 py-2 hover:rounded hover:bg-gray-700" do %>
-<span class="hidden md:inline-block">Create a appointment</span> 
-<% end %>
-<%= link_to  appointments_path ,  class: "block px-4 py-2 hover:rounded hover:bg-gray-700" do %>
-<span class="hidden md:inline-block">View all  appointment</span> 
-<% end %>
+  <!-- Appointments Overview Section -->
+  <div class="max-w-7xl mx-auto mt-6 p-4 border border-gray-300 rounded-lg shadow-lg">
+    <h2 class="text-lg font-semibold mb-4 text-center">Appointments Overview</h2>
+    <%= pie_chart [
+        ["Today's Appointments", @today_appointments_count],
+        ["Completed Appointments", @completed_appointments_count]
+      ], 
+      height: "300px", 
+      width: "100%" 
+    %>
+  </div>
+
+  <!-- Appointments Management Section -->
+  <div class="flex justify-center mb-12 mt-10">
+    <div class="w-full max-w-lg">
+      <h2 class="text-2xl font-semibold mb-4 text-center">Manage Appointments</h2>
+      <div class="flex justify-between space-x-4">
+        <!-- Create Appointment Button -->
+        <%= link_to new_appointment_path, class: "block w-full text-center border px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600 transition-all duration-200 shadow" do %>
+          Create an Appointment
+        <% end %>
+        <!-- View Appointments Button -->
+        <%= link_to appointments_path, class: "block w-full text-center border px-4 py-2 rounded bg-green-500 text-white hover:bg-green-600 transition-all duration-200 shadow" do %>
+          View All Appointments
+        <% end %>
+      </div>
+      <div class="mt-4">
+        <!-- Add New Patient Button -->
+        <%= link_to 'Add New Patient', new_patient_path, class: "block w-full text-center border px-4 py-2 rounded bg-indigo-500 text-white hover:bg-indigo-600 transition-all duration-200 shadow" %>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,29 @@
+<!-- app/views/receptionist/new_patient.html.erb -->
+<div class="max-w-md mx-auto">
+  <h1 class="text-2xl font-bold mb-4">Create New Patient</h1>
+  <%= form_with(model: @user, url: create_patient_path, local: true) do |form| %>
+    <div class="mb-4">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "border rounded px-3 py-2 w-full" %>
+    </div>
+    
+    <div class="mb-4">
+      <%= form.label :email %>
+      <%= form.email_field :email, class: "border rounded px-3 py-2 w-full" %>
+    </div>
+    
+    <div class="mb-4">
+      <%= form.label :age %>
+      <%= form.number_field :age, class: "border rounded px-3 py-2 w-full" %>
+    </div>
+    
+    <div class="mb-4">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "border rounded px-3 py-2 w-full" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.submit "Create Patient", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+    </div>
+  <% end %>
+</div>
