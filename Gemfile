@@ -64,7 +64,7 @@ gem "chartkick", "~> 5.1"
 
 gem "groupdate", "~> 6.4"
 
-gem "faker", "~> 3.4"
+gem "faker", "~> 3.5"
 
 gem "kaminari", "~> 1.2"
               
