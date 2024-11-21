@@ -67,3 +67,4 @@ gem "groupdate", "~> 6.4"
 gem "faker", "~> 3.4"
 
 gem "kaminari", "~> 1.2"
+              

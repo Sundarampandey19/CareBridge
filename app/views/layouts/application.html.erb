@@ -51,6 +51,9 @@
             <% end %>
           </li>
         <% else %>
+              <button class="lg:hidden text-gray-800 hover:text-gray-600" id="hamburger-icon">
+                <i class=" lg:hidden fa-solid fa-bars"></i>
+              </button>
           <li><%= link_to "Home", root_path, class: "text-gray-600 hover:text-gray-800" %></li>
           <li><%= link_to "About Us", "#about", class: "text-gray-600 hover:text-gray-800" %></li>
           <li><%= link_to "Contact", "#contact", class: "text-gray-600 hover:text-gray-800" %></li>
