@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :users, only: [:new, :create, :index, :edit, :update, :destroy]
   end
 
-  resources :appointments , only: [:create , :index , :edit ]
+  resources :appointments , only: [:create , :index , :edit , :new]
   get "patient/dashboard", to: 'patient#dashboard'
   get "doctor/dashboard", to: 'doctor#dashboard'
   get "receptionist/dashboard", to: 'receptionist#dashboard'
